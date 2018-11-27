@@ -10,9 +10,9 @@ using SkiaSharp;
 
 namespace SkiaSharpFunction
 {
-    public static class Images
+    public static class CreateImages
     {
-        [FunctionName("images")]
+        [FunctionName("create-images")]
         public static async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req, ILogger log)
         {
             log.LogInformation("Creating image with SkiaSharp...");
