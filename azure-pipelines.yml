@@ -10,7 +10,7 @@ steps:
     inputs:
       solution: 'SkiaSharpFunction.sln'
       configuration: 'Release'
-      msbuildArguments: '/restore /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:publishUrl=../'
+      msbuildArguments: '/restore /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:publishUrl=../output'
 
   - task: PublishBuildArtifacts@1
     inputs:
