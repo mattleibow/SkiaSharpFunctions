@@ -1,13 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <AzureFunctionsVersion>v3-preview</AzureFunctionsVersion>
   </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.30-beta2" />
     <PackageReference Include="SkiaSharp" Version="1.68.1-rc.172" />
     <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="1.68.1-rc.172" />
   </ItemGroup>
+
   <ItemGroup>
     <None Update="host.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -17,4 +20,13 @@
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </None>
   </ItemGroup>
+
+  <Target Name="CopyRequiredNativeAssets" AfterTargets="Publish">
+    <ItemGroup>
+      <NativeAssetToCopy Include="$(PublishDir)runtimes\linux-x64\native\libSkiaSharp.so" />
+      <NativeAssetToCopy Include="$(PublishDir)runtimes\win-x64\native\libSkiaSharp.dll" />
+    </ItemGroup>
+    <Copy SourceFiles="@(NativeAssetToCopy)" DestinationFolder="$(PublishDir)bin" />
+  </Target>
+
 </Project>
