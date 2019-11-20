@@ -5,7 +5,14 @@ pool:
   name: 'Hosted Windows 2019 with VS2019'
 
 steps:
-  - pwsh: msbuild /restore /p:Configuration=Release /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:publishUrl=../
+
+  - task: MSBuild@1
+    inputs:
+      solution: 'SkiaSharpFunction.sln'
+      configuration: 'Release'
+      msbuildArguments: '/p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:publishUrl=../'
+      restoreNugetPackages: true
+
   - task: PublishBuildArtifacts@1
     inputs:
       pathToPublish: 'output'
