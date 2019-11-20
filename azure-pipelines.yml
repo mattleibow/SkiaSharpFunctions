@@ -5,15 +5,8 @@ pool:
   name: 'Hosted Windows 2019 with VS2019'
 
 steps:
-- pwsh: msbuild /restore /p:Configuration=Release /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:publishUrl="$(Agent.TempDirectory)\WebAppContent\"
-
-- task: ArchiveFiles@2
-  displayName: 'Archive Files'
-  inputs:
-    rootFolderOrFile: '$(Agent.TempDirectory)\WebAppContent'
-    includeRootFolder: false
-
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact'
-  inputs:
-    pathToPublish: '$(build.artifactstagingdirectory)'
+  - pwsh: msbuild /restore /p:Configuration=Release /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:publishUrl=../
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: 'output'
+      artifactName: 'output'
