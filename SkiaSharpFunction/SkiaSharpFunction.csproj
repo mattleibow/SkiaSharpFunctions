@@ -6,6 +6,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.30-beta2" />
     <PackageReference Include="SkiaSharp" Version="1.68.1-rc.172" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="1.68.1-rc.172" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
