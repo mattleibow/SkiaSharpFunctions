@@ -23,8 +23,7 @@
 
   <Target Name="CopyRequiredNativeAssets" AfterTargets="Publish">
     <ItemGroup>
-      <NativeAssetToCopy Include="$(PublishDir)runtimes\linux-x64\native\libSkiaSharp.so" />
-      <NativeAssetToCopy Include="$(PublishDir)runtimes\win-x64\native\libSkiaSharp.dll" />
+      <NativeAssetToCopy Include="$(PublishDir)runtimes\win-x86\native\libSkiaSharp.dll" />
     </ItemGroup>
     <Copy SourceFiles="@(NativeAssetToCopy)" DestinationFolder="$(PublishDir)bin" />
   </Target>
