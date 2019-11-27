@@ -20,7 +20,7 @@
     </None>
   </ItemGroup>
 
-  <Target Name="CopyRequiredNativeAssets" AfterTargets="Publish">
+  <Target Name="CopyRequiredNativeAssets" AfterTargets="_FunctionsPostPublish">
     <ItemGroup>
       <NativeAssetToCopy Include="$(PublishDir)runtimes\win-x86\native\libSkiaSharp.dll" />
     </ItemGroup>
